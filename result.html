@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>时间轴</title>
+    <style>
+        :root {
+            --work-color: #3b82f6;
+            --life-color: #10b981;
+            --default-color: #6366f1;
+            --bg-color: #f8fafc;
+            --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --hover-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: var(--bg-color);
+            margin: 0;
+            color: #1e293b;
+            line-height: 1.5;
+        }
+
+        .timeline {
+            max-width: 900px;
+            margin: 80px auto;
+            position: relative;
+            padding: 0 20px;
+        }
+
+        /* 中轴线改为渐变 */
+        .timeline::before {
+            content: ''; position: absolute; left: 50%; width: 4px; height: 100%;
+            background: linear-gradient(to bottom, transparent, #cbd5e1 5%, #cbd5e1 95%, transparent);
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .item { position: relative; width: 50%; padding: 30px 50px; box-sizing: border-box; }
+        .item.left { left: 0; text-align: right; }
+        .item.right { left: 50%; text-align: left; }
+
+        /* 装饰圆点：增加内外双圈效果 */
+        .item::after {
+            content: ''; position: absolute; top: 35px; width: 20px; height: 20px;
+            background: white; border-radius: 50%; z-index: 2;
+            border: 4px solid var(--default-color);
+            box-shadow: 0 0 0 4px white;
+            transition: all 0.3s ease;
+        }
+        .item.work::after { border-color: var(--work-color); }
+        .item.life::after { border-color: var(--life-color); }
+
+        .item.left::after { right: -13px; }
+        .item.right::after { left: -13px; }
+
+        /* 卡片容器美化 */
+        .content {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .content:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: var(--hover-shadow);
+        }
+
+        /* 鼠标悬停时圆点放大 */
+        .item:hover::after {
+            transform: scale(1.3);
+            background: var(--default-color);
+        }
+        .item.work:hover::after { background: var(--work-color); }
+        .item.life:hover::after { background: var(--life-color); }
+
+        /* 图片层 */
+        .img-wrapper { position: relative; overflow: hidden; }
+        .img-wrapper img {
+            width: 100%; height: 200px; object-fit: cover; display: block;
+            transition: transform 0.5s ease;
+        }
+        .content:hover .img-wrapper img { transform: scale(1.1); }
+
+        /* 文本面板 */
+        .text-pannel { padding: 1.5rem; }
+        .year {
+            display: inline-block;
+            font-weight: 800; font-size: 0.75rem;
+            text-transform: uppercase; letter-spacing: 0.1em;
+            padding: 2px 8px; border-radius: 4px; margin-bottom: 10px;
+            background: rgba(0,0,0,0.05);
+        }
+        .item.work .year { color: var(--work-color); background: rgba(59, 130, 246, 0.1); }
+        .item.life .year { color: var(--life-color); background: rgba(16, 185, 129, 0.1); }
+
+        .title { font-weight: 700; font-size: 1.25rem; color: #0f172a; margin-bottom: 4px; }
+        .subtitle { color: #64748b; font-size: 0.9rem; font-weight: 500; margin-bottom: 12px; }
+        .desc { font-size: 0.95rem; color: #475569; margin: 0; line-height: 1.6; }
+
+        /* 响应式优化 */
+        @media (max-width: 768px) {
+            .timeline::before { left: 30px; }
+            .item { width: 100%; text-align: left !important; padding: 20px 20px 20px 60px; }
+            .item.right { left: 0; }
+            .item::after { left: 20px !important; }
+            .item.left::after { right: auto; }
+        }
+    </style>
+</head>
+<body>
+    <div class="timeline">
+        
+        <div class="item left ">
+            <div class="content">
+                
+
+                <div class="text-pannel">
+                    <div class="year">1811</div>
+                    <div class="title">初步发现硅</div>
+                    <div class="subtitle">盖-吕萨克，泰纳</div>
+                    <p class="desc">None</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="item right ">
+            <div class="content">
+                
+
+                <div class="text-pannel">
+                    <div class="year">1824</div>
+                    <div class="title">纯化硅</div>
+                    <div class="subtitle">永斯·雅各布·贝采利乌斯</div>
+                    <p class="desc">None</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="item left ">
+            <div class="content">
+                
+
+                <div class="text-pannel">
+                    <div class="year">1854</div>
+                    <div class="title">制备出硅晶</div>
+                    <div class="subtitle">德维尔</div>
+                    <p class="desc">None</p>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</body>
+</html>
