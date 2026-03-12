@@ -8,7 +8,7 @@
   控制台手动输入文件创建时间线
 </details>
 <details>
-<summary>2.0（好消息：现在支持图形界面来处理了！）</summary>
+<summary>2.0　【【2026年3月12日】（好消息：现在支持图形界面来处理了！）</summary>
   通过图形界面修改导入csv创建时间线
 </details>
 
