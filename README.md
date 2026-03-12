@@ -1,6 +1,17 @@
 # QuicklyTimeLine
 快速创建HTML时间线！
 
+## 更新！  
+<img width="801" height="629" alt="截屏2026-03-12 21 51 29" src="https://github.com/user-attachments/assets/df62990d-42cc-4bec-9cfa-5e3efeec1065" />
+<details>
+<summary>1.0</summary>
+  控制台手动输入文件创建时间线
+</details>
+<details>
+<summary>2.0（好消息：现在支持图形界面来处理了！）</summary>
+  通过图形界面修改导入csv创建时间线
+</details>
+
 ## 简介：
 这个项目可以让你快速的创建时间线，你只需要提供一个csv数据文件，即可生成一个基于html的时间线可视化图！
 
@@ -13,9 +24,6 @@
 ```bash
 pip install -r requirements.txt
 ```
-## 使用指南：
-把数据文件放在代码同级目录下；  
-运行Generate.py，输入文件名即可；  
 
 ## 数据格式（参考sampledata.csv）： 
 year,title,subtitle,description  
